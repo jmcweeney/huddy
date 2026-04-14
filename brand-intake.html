@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huddy — Brand Intake</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --near-black: #1d1d1f;
+      --light-gray: #f5f5f7;
+      --white: #ffffff;
+      --blue: #0071e3;
+      --link-blue: #0066cc;
+      --body-text: rgba(0, 0, 0, 0.8);
+      --secondary-text: rgba(0, 0, 0, 0.48);
+      --card-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+      --font-display: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-text: "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-text);
+      background: var(--white);
+      color: var(--near-black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 48px;
+      background: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--near-black);
+      letter-spacing: -0.28px;
+    }
+    .nav-logo span { color: var(--secondary-text); font-weight: 400; }
+    .nav-progress {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--secondary-text);
+      letter-spacing: -0.12px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      padding: 64px 0 56px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--secondary-text);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+      color: var(--near-black);
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .hero p {
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--body-text);
+      max-width: 520px;
+      margin: 0 auto 20px;
+    }
+    .hero p:last-child { margin-bottom: 0; }
+    .hero-meta {
+      font-size: 14px;
+      color: var(--secondary-text);
+      letter-spacing: -0.224px;
+    }
+
+    /* ── FORM SHELL ── */
+    .form-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .form-wrap > form {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--white);
+      border-radius: 0;
+      padding: 44px 0 48px;
+      margin-top: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+    }
+    .section-number {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.14;
+      letter-spacing: 0.196px;
+      color: var(--near-black);
+    }
+    .section-divider {
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+      margin-top: 20px;
+    }
+
+    /* ── QUESTION ── */
+    .question {
+      margin-top: 28px;
+    }
+    .question label {
+      display: block;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--near-black);
+      margin-bottom: 10px;
+    }
+    .question label strong {
+      font-weight: 600;
+    }
+    textarea {
+      width: 100%;
+      font-family: var(--font-text);
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: -0.224px;
+      color: var(--near-black);
+      background: var(--light-gray);
+      border: 1.5px solid transparent;
+      border-radius: 8px;
+      padding: 12px 14px;
+      resize: vertical;
+      min-height: 80px;
+      outline: none;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+    textarea::placeholder { color: var(--secondary-text); }
+    textarea:focus {
+      border-color: var(--blue);
+      background: var(--white);
+    }
+
+    /* ── CLOSING CARD ── */
+    .closing-card {
+      background: var(--white);
+      border-radius: 0;
+      padding: 52px 0 56px;
+      margin-top: 0;
+      text-align: center;
+    }
+    .closing-card .section-number { color: var(--secondary-text); }
+    .closing-card .section-title {
+      color: var(--near-black);
+      font-size: 34px;
+      line-height: 1.10;
+    }
+    .closing-card .closing-q {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--body-text);
+      margin: 20px 0 28px;
+    }
+    .closing-card textarea {
+      min-height: 120px;
+    }
+    .closing-card textarea:focus {
+      border-color: var(--blue);
+    }
+
+    /* ── SUBMIT ── */
+    .submit-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -0.374px;
+      border: none;
+      border-radius: 980px;
+      padding: 13px 32px;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+    .btn-submit:hover { background: #0077ed; }
+    .btn-submit:active { background: #0068d0; transform: scale(0.98); }
+    .btn-submit:focus { outline: 2px solid var(--blue); outline-offset: 3px; }
+    .submit-note {
+      font-family: var(--font-text);
+      font-size: 12px;
+      color: var(--secondary-text);
+      letter-spacing: -0.12px;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar-wrap {
+      background: rgba(0,0,0,0.06);
+      height: 2px;
+      position: fixed;
+      top: 48px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    }
+    #progress-bar {
+      height: 100%;
+      background: var(--blue);
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-family: var(--font-text);
+      font-size: 14px;
+      color: var(--secondary-text);
+      letter-spacing: -0.224px;
+    }
+    footer a {
+      color: var(--link-blue);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .section-card, .closing-card { padding: 32px 0 36px; }
+      .hero { padding: 48px 20px 44px; }
+      .hero h1 { font-size: 30px; }
+    }
+    @media (max-width: 360px) {
+      .section-card, .closing-card { padding: 24px 0 28px; }
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .success-screen.visible { display: flex; }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .success-icon svg { width: 28px; height: 28px; }
+    .success-screen h2 {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.10;
+      letter-spacing: -0.28px;
+      color: var(--near-black);
+      margin-bottom: 16px;
+    }
+    .success-screen p {
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.47;
+      color: var(--body-text);
+      max-width: 440px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Huddy <span>— Brand Intake</span></div>
+  <div class="nav-progress" id="nav-progress">0 of 27 answered</div>
+</nav>
+<div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+
+<!-- ── FORM ── -->
+<div class="form-wrap" id="form-wrap">
+<div class="hero">
+  <p class="hero-eyebrow">Huddy × Buzz</p>
+  <h1>Brand Status</h1>
+  <p>Before we build anything, we need to know where things actually stand. No judgment, no wrong answers. Just want to make sure what we create actually moves the needle — for the brand and for the dogs.</p>
+  <p class="hero-meta">20 minutes, tops. Grab a coffee.</p>
+</div>
+<form id="intake-form" action="https://formspree.io/f/xlgadwaq" method="POST" novalidate>
+
+  <!-- 1. The Business -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-number">01 — The Business</div>
+      <h2 class="section-title">Where things actually stand</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="question">
+      <label for="q1">How many orders are you doing a month right now, <strong>roughly?</strong></label>
+      <textarea id="q1" name="monthly_orders" placeholder="Ballpark is fine…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q2">What's the split between <strong>one-time buyers vs. subscribers?</strong></label>
+      <textarea id="q2" name="buyer_split" placeholder="e.g. 70/30, mostly one-time…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q3">What's your <strong>churn looking like on subscriptions</strong> — people staying or dropping off?</label>
+      <textarea id="q3" name="churn" placeholder="Any patterns in when they leave?" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q4">Which product is <strong>flying</strong> and which is just <strong>sitting there?</strong></label>
+      <textarea id="q4" name="product_performance" placeholder="Be honest." rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q5">Do you have a sense of what a <strong>customer is worth to you over time?</strong></label>
+      <textarea id="q5" name="ltv" placeholder="LTV, repeat purchase rate, gut feel…" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- 2. The Site & Platform -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-number">02 — The Site &amp; Platform</div>
+      <h2 class="section-title">What's working, what drives you crazy</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="question">
+      <label for="q6">Why <strong>Lightspeed</strong> — was that intentional or just how it started?</label>
+      <textarea id="q6" name="why_lightspeed" placeholder="No judgment either way." rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q7">What's <strong>working on the site</strong> and what drives you <strong>crazy</strong> about it?</label>
+      <textarea id="q7" name="site_feedback" placeholder="The good and the frustrating." rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q8">Are you tracking anything — <strong>visitors, bounce rate, conversions?</strong></label>
+      <textarea id="q8" name="analytics" placeholder="Google Analytics, Shopify reports, nothing yet…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q9">Where's your <strong>traffic actually coming from?</strong></label>
+      <textarea id="q9" name="traffic_sources" placeholder="Social, word of mouth, search, paid…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q10">Have you run <strong>paid ads?</strong> What happened?</label>
+      <textarea id="q10" name="paid_ads" placeholder="What you tried, what the ROI felt like." rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q11">Are you <strong>running the site yourself</strong> or do you have help?</label>
+      <textarea id="q11" name="site_ops" placeholder="Solo, contractor, team…" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- 3. The Customer -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-number">03 — The Customer</div>
+      <h2 class="section-title">Who's actually buying</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="question">
+      <label for="q12">Who's your <strong>best customer</strong> — like if you had to describe one person?</label>
+      <textarea id="q12" name="best_customer" placeholder="Paint a picture. Demographics, mindset, lifestyle…" rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q13">Have you ever just <strong>talked to someone after they bought?</strong> What do they tell you?</label>
+      <textarea id="q13" name="customer_feedback" placeholder="What surprises them, what they loved…" rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q14">Where are your <strong>buyers mostly located?</strong></label>
+      <textarea id="q14" name="buyer_location" placeholder="City, region, country…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q15">What's the <strong>primary lens they come in with</strong> — rescue advocate, eco-conscious, dog lover?</label>
+      <textarea id="q15" name="buyer_lens" placeholder="What's the hook that lands?" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q16">Anyone buying in <strong>bulk yet</strong> — parks, vets, rescues?</label>
+      <textarea id="q16" name="bulk_buyers" placeholder="Any B2B or institutional demand?" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- 4. The Mission -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-number">04 — The Mission</div>
+      <h2 class="section-title">The reason this exists</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="question">
+      <label for="q17">When you tell people about the <strong>dog meat trade angle,</strong> what's the typical reaction?</label>
+      <textarea id="q17" name="mission_reaction" placeholder="Shock, curiosity, skepticism, tears…" rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q18">Has anyone <strong>covered you</strong> — press, podcasts, blogs?</label>
+      <textarea id="q18" name="press" placeholder="Links, names, what the angle was…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q19">Which of your <strong>three rescue partners</strong> has the most active community?</label>
+      <textarea id="q19" name="rescue_partners" placeholder="And why do you think that is?" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q20">Have any of them <strong>pushed Huddy to their audience</strong> yet? What happened?</label>
+      <textarea id="q20" name="partner_activation" placeholder="Email blast, social post, event…" rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q21">What's the <strong>one dog story</strong> that makes you remember exactly why you started this?</label>
+      <textarea id="q21" name="origin_story" placeholder="The one that still hits." rows="4"></textarea>
+    </div>
+  </div>
+
+  <!-- 5. Social & Word of Mouth -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-number">05 — Social &amp; Word of Mouth</div>
+      <h2 class="section-title">How the word is spreading</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="question">
+      <label for="q22">Where are you <strong>most active</strong> and what feels natural vs. forced?</label>
+      <textarea id="q22" name="social_platforms" placeholder="Instagram, TikTok, email, none of the above…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q23">The <strong>trash can ads</strong> — who came up with those and did they move anything measurable?</label>
+      <textarea id="q23" name="trash_ads" placeholder="The origin story and the results." rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q24">Are <strong>customers posting about Huddy</strong> on their own? Where?</label>
+      <textarea id="q24" name="ugc" placeholder="Tags, stories, reviews, Reddit…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q25">Do you have an <strong>email list</strong> and are you actually using it?</label>
+      <textarea id="q25" name="email_list" placeholder="Size, how often you send, what you say…" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- 6. The Real Talk -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-number">06 — The Real Talk</div>
+      <h2 class="section-title">The honest version</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="question">
+      <label for="q26a">Three years from now, Huddy is <strong>crushing it</strong> — what does that actually look like to you?</label>
+      <textarea id="q26a" name="vision_3yr" placeholder="Revenue, reach, impact — be specific." rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q26b">What's the <strong>honest thing holding growth back</strong> right now?</label>
+      <textarea id="q26b" name="growth_blockers" placeholder="The real answer, not the polished one." rows="3"></textarea>
+    </div>
+    <div class="question">
+      <label for="q26c">Any <strong>hesitation</strong> about moving platforms or rebuilding the site?</label>
+      <textarea id="q26c" name="hesitation" placeholder="Fears, past bad experiences, costs…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q26d">How <strong>hands-on</strong> do you want to stay as this grows?</label>
+      <textarea id="q26d" name="involvement" placeholder="Operator, visionary, somewhere in between…" rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q26e">What's the <strong>budget reality</strong> for the next six months?</label>
+      <textarea id="q26e" name="budget" placeholder="Rough range is fine." rows="2"></textarea>
+    </div>
+    <div class="question">
+      <label for="q26f">Who else is in your corner on this — <strong>advisor, partner, investor?</strong></label>
+      <textarea id="q26f" name="team" placeholder="Anyone helping carry this?" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- 7. The Closer -->
+  <div class="closing-card">
+    <div class="section-number">07 — Last One</div>
+    <h2 class="section-title">The one that matters most</h2>
+    <p class="closing-q">If someone lands on your site today and leaves without buying — what do you think stopped them?</p>
+    <textarea id="q27" name="conversion_blocker" placeholder="That's the one. Answer it honestly and we'll know exactly where to start." rows="5"></textarea>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Send it to Buzz
+      </button>
+      <span class="submit-note">Your responses go straight to Buzz via Formspree.</span>
+    </div>
+  </div>
+
+</form>
+
+<!-- Success -->
+<div class="success-screen" id="success-screen">
+  <div class="success-icon">
+    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 14l7 7L23 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <h2>You're all set.</h2>
+  <p>That's everything we need to start making something that actually moves the needle.</p>
+</div>
+
+</div><!-- /form-wrap -->
+
+<footer>
+  <p>Huddy &mdash; Made for the dogs. &nbsp;<a href="https://huddybag.com/">huddybag.com</a></p>
+</footer>
+
+<script>
+  const form = document.getElementById('intake-form');
+  const progressBar = document.getElementById('progress-bar');
+  const navProgress = document.getElementById('nav-progress');
+  const successScreen = document.getElementById('success-screen');
+
+  const textareas = form.querySelectorAll('textarea');
+  const total = textareas.length;
+
+  function countAnswered() {
+    let n = 0;
+    textareas.forEach(t => { if (t.value.trim().length > 0) n++; });
+    return n;
+  }
+
+  function updateProgress() {
+    const answered = countAnswered();
+    const pct = Math.round((answered / total) * 100);
+    progressBar.style.width = pct + '%';
+    navProgress.textContent = answered + ' of ' + total + ' answered';
+  }
+
+  // Auto-grow textareas
+  textareas.forEach(ta => {
+    ta.addEventListener('input', () => {
+      ta.style.height = 'auto';
+      ta.style.height = ta.scrollHeight + 'px';
+      updateProgress();
+    });
+  });
+
+  // Save to localStorage as they type
+  textareas.forEach(ta => {
+    const key = 'huddy_intake_' + ta.id;
+    const saved = localStorage.getItem(key);
+    if (saved) { ta.value = saved; ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; }
+    ta.addEventListener('input', () => localStorage.setItem(key, ta.value));
+  });
+
+  updateProgress();
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const btn = form.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/xlgadwaq', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        // Clear localStorage on successful send
+        textareas.forEach(ta => localStorage.removeItem('huddy_intake_' + ta.id));
+        form.style.display = 'none';
+        successScreen.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Send it to Buzz';
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Send it to Buzz';
+      alert('Network error. Check your connection and try again.');
+    }
+  });
+</script>
+</body>
+</html>
