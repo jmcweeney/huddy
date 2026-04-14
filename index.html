@@ -66,10 +66,13 @@
       text-align: center;
     }
     .hero-logo {
-      width: 80px;
-      height: 80px;
+      width: 320px;
+      height: 320px;
       object-fit: contain;
       margin-bottom: 20px;
+    }
+    @media (max-width: 640px) {
+      .hero-logo { width: 240px; height: 240px; }
     }
     .hero h1 {
       font-family: var(--font-display);
