@@ -151,7 +151,9 @@
       margin-top: 28px;
     }
     .question label {
-      display: block;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
       font-family: var(--font-text);
       font-size: 17px;
       font-weight: 400;
@@ -162,6 +164,14 @@
     }
     .question label strong {
       font-weight: 600;
+    }
+    .live-dot {
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f2653a;
+      margin-top: 6px;
     }
     textarea {
       width: 100%;
@@ -367,7 +377,7 @@
     </div>
 
     <div class="question">
-      <label for="q1">How many orders are you doing a month right now, <strong>roughly?</strong></label>
+      <label for="q1"><span class="live-dot"></span>How many orders are you doing a month right now, <strong>roughly?</strong></label>
       <textarea id="q1" name="monthly_orders" placeholder="Ballpark is fine…" rows="2"></textarea>
     </div>
     <div class="question">
@@ -375,15 +385,15 @@
       <textarea id="q2" name="buyer_split" placeholder="e.g. 70/30, mostly one-time…" rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q3">What's your <strong>churn looking like on subscriptions</strong> — people staying or dropping off?</label>
+      <label for="q3"><span class="live-dot"></span>What's your <strong>churn looking like on subscriptions</strong> — people staying or dropping off?</label>
       <textarea id="q3" name="churn" placeholder="Any patterns in when they leave?" rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q4">Which product is <strong>flying</strong> and which is just <strong>sitting there?</strong></label>
+      <label for="q4"><span class="live-dot"></span>Which product is <strong>flying</strong> and which is just <strong>sitting there?</strong></label>
       <textarea id="q4" name="product_performance" placeholder="Be honest." rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q5">Do you have a sense of what a <strong>customer is worth to you over time?</strong></label>
+      <label for="q5"><span class="live-dot"></span>Do you have a sense of what a <strong>customer is worth to you over time?</strong></label>
       <textarea id="q5" name="ltv" placeholder="LTV, repeat purchase rate, gut feel…" rows="2"></textarea>
     </div>
   </div>
@@ -401,11 +411,11 @@
       <textarea id="q6" name="why_lightspeed" placeholder="No judgment either way." rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q7">What's <strong>working on the site</strong> and what drives you <strong>crazy</strong> about it?</label>
+      <label for="q7"><span class="live-dot"></span>What's <strong>working on the site</strong> and what drives you <strong>crazy</strong> about it?</label>
       <textarea id="q7" name="site_feedback" placeholder="The good and the frustrating." rows="3"></textarea>
     </div>
     <div class="question">
-      <label for="q8">Are you tracking anything — <strong>visitors, bounce rate, conversions?</strong></label>
+      <label for="q8"><span class="live-dot"></span>Are you tracking anything — <strong>visitors, bounce rate, conversions?</strong></label>
       <textarea id="q8" name="analytics" placeholder="Google Analytics, Shopify reports, nothing yet…" rows="2"></textarea>
     </div>
     <div class="question">
@@ -413,7 +423,7 @@
       <textarea id="q9" name="traffic_sources" placeholder="Social, word of mouth, search, paid…" rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q10">Have you run <strong>paid ads?</strong> What happened?</label>
+      <label for="q10"><span class="live-dot"></span>Have you run <strong>paid ads?</strong> What happened?</label>
       <textarea id="q10" name="paid_ads" placeholder="What you tried, what the ROI felt like." rows="3"></textarea>
     </div>
     <div class="question">
@@ -431,11 +441,11 @@
     </div>
 
     <div class="question">
-      <label for="q12">Who's your <strong>best customer</strong> — like if you had to describe one person?</label>
+      <label for="q12"><span class="live-dot"></span>Who's your <strong>best customer</strong> — like if you had to describe one person?</label>
       <textarea id="q12" name="best_customer" placeholder="Paint a picture. Demographics, mindset, lifestyle…" rows="3"></textarea>
     </div>
     <div class="question">
-      <label for="q13">Have you ever just <strong>talked to someone after they bought?</strong> What do they tell you?</label>
+      <label for="q13"><span class="live-dot"></span>Have you ever just <strong>talked to someone after they bought?</strong> What do they tell you?</label>
       <textarea id="q13" name="customer_feedback" placeholder="What surprises them, what they loved…" rows="3"></textarea>
     </div>
     <div class="question">
@@ -461,7 +471,7 @@
     </div>
 
     <div class="question">
-      <label for="q17">When you tell people about the <strong>dog meat trade angle,</strong> what's the typical reaction?</label>
+      <label for="q17"><span class="live-dot"></span>When you tell people about the <strong>dog meat trade angle,</strong> what's the typical reaction?</label>
       <textarea id="q17" name="mission_reaction" placeholder="Shock, curiosity, skepticism, tears…" rows="3"></textarea>
     </div>
     <div class="question">
@@ -477,7 +487,7 @@
       <textarea id="q20" name="partner_activation" placeholder="Email blast, social post, event…" rows="3"></textarea>
     </div>
     <div class="question">
-      <label for="q21">What's the <strong>one dog story</strong> that makes you remember exactly why you started this?</label>
+      <label for="q21"><span class="live-dot"></span>What's the <strong>one dog story</strong> that makes you remember exactly why you started this?</label>
       <textarea id="q21" name="origin_story" placeholder="The one that still hits." rows="4"></textarea>
     </div>
   </div>
@@ -517,11 +527,11 @@
     </div>
 
     <div class="question">
-      <label for="q26a">Three years from now, Huddy is <strong>crushing it</strong> — what does that actually look like to you?</label>
+      <label for="q26a"><span class="live-dot"></span>Three years from now, Huddy is <strong>crushing it</strong> — what does that actually look like to you?</label>
       <textarea id="q26a" name="vision_3yr" placeholder="Revenue, reach, impact — be specific." rows="3"></textarea>
     </div>
     <div class="question">
-      <label for="q26b">What's the <strong>honest thing holding growth back</strong> right now?</label>
+      <label for="q26b"><span class="live-dot"></span>What's the <strong>honest thing holding growth back</strong> right now?</label>
       <textarea id="q26b" name="growth_blockers" placeholder="The real answer, not the polished one." rows="3"></textarea>
     </div>
     <div class="question">
@@ -529,11 +539,11 @@
       <textarea id="q26c" name="hesitation" placeholder="Fears, past bad experiences, costs…" rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q26d">How <strong>hands-on</strong> do you want to stay as this grows?</label>
+      <label for="q26d"><span class="live-dot"></span>How <strong>hands-on</strong> do you want to stay as this grows?</label>
       <textarea id="q26d" name="involvement" placeholder="Operator, visionary, somewhere in between…" rows="2"></textarea>
     </div>
     <div class="question">
-      <label for="q26e">What's the <strong>budget reality</strong> for the next six months?</label>
+      <label for="q26e"><span class="live-dot"></span>What's the <strong>budget reality</strong> for the next six months?</label>
       <textarea id="q26e" name="budget" placeholder="Rough range is fine." rows="2"></textarea>
     </div>
     <div class="question">
